@@ -27,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'template_id',
         as: 'template'
       });
+      policy.hasMany(models.policy_approval, {
+        foreignKey: 'policy_id',
+        as: 'policy_approvals'
+      });
+      policy.hasMany(models.policy_acknowledgement, {
+        foreignKey: 'policy_id',
+        as: 'policy_acknowledgements'
+      });
   };
 
   return policy;

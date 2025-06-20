@@ -7,9 +7,9 @@ const {
 } = require("./controllers/employee_controller");
 
 router.post("/", create_employee);
-router.get("/employees/:id/policies-to-acknowledge", get_policies_to_acknowledge);
+router.get("/:id/policies-to-acknowledge", get_policies_to_acknowledge);
 
-router.post("/employees/:id/acknowledge", post_acknowledgement);
-router.get("/employees/:id/history", get_acknowledgement_history);
+router.post("/:id/acknowledge", post_acknowledgement);
+router.get("/:id/history", get_acknowledgement_history);
 
 module.exports = router;

@@ -58,13 +58,18 @@ const post_acknowledgement = async (req, res) => {
   }
 };
 
-const get_acknowledgement_history = async (req, res) => {
-  try {
-    const employee_id = req.params.id;
+  const get_acknowledgement_history = async (req, res) => {
+    try {
+      const employee_id = req.params.id;
 
-    const history = await models.policy_acknowledgement.findAll({
+      const history = await models.policy_acknowledgement.findAll({
       where: { employee_id },
-      include: [models.policy],
+      include: [
+        {
+          model: models.policy,
+          as: "policy"
+        }
+      ]
     });
 
     res.status(200).json({

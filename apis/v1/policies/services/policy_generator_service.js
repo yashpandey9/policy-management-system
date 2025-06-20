@@ -55,7 +55,18 @@ const approve_policy = async ({ policy_id, approved_by, comments }) => {
 
 const get_policy_by_id = async (policy_id) => {
   return await models.policy.findByPk(policy_id, {
-    include: [models.policy_approval, models.policy_acknowledgement],
+    include: [
+      {
+        model: models.policy_approval,
+        as: "policy_approvals",
+        include: [{ model: models.employee, as: "approver" }]
+      },
+      {
+        model: models.policy_acknowledgement,
+        as: "policy_acknowledgements",
+        include: [{ model: models.employee, as: "employee" }]
+      }
+    ]
   });
 };
 
