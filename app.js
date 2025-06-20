@@ -39,6 +39,10 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send("Something went wrong!");
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Policy management system!');
+});
+
 // ✅ Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
