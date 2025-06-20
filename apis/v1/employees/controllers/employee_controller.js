@@ -29,20 +29,29 @@ const get_policies_to_acknowledge = async (req, res) => {
     const employee_id = req.params.id;
 
     const pending_requests = await models.acknowledgement_request.findAll({
-      where: { employee_id, status: status.PENDING },
-      include: [models.policy],
+      where: {
+        employee_id,
+        status: status.PENDING
+      },
+      include: [
+        {
+          model: models.policy,
+          as: "policy"
+        }
+      ]
     });
 
     res.status(200).json({
       status: true,
       message: "pending_acknowledgements_fetched",
-      data: pending_requests,
+      data: pending_requests
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ status: false, message: error.message, data: null });
   }
 };
+
 
 const post_acknowledgement = async (req, res) => {
   try {

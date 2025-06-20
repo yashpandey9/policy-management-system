@@ -35,7 +35,7 @@ const create_custom_policy = async ({ customer_company_id, name, description, co
 
 const update_policy_config = async ({ policy_id, config }) => {
   const policy = await models.policy.findByPk(policy_id);
-  const new_version = policy.version + 1;
+  const new_version = parseInt(policy.version, 10) + 1;
   const updated_policy = await policy.update({ config, version: new_version, status: policy_status.DRAFT });
   return updated_policy;
 };
