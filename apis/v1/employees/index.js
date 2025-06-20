@@ -6,7 +6,7 @@ const {
   get_acknowledgement_history,
 } = require("./controllers/employee_controller");
 
-router.post("/employees", create_employee);
+router.post("/", create_employee);
 router.get("/employees/:id/policies-to-acknowledge", get_policies_to_acknowledge);
 
 router.post("/employees/:id/acknowledge", post_acknowledgement);

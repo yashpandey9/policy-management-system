@@ -4,6 +4,6 @@ const {
   patch_upgrade_template,
 } = require("./controllers/template_controller");
 
-router.patch("/templates/:id/upgrade", patch_upgrade_template);
+router.patch("/:id/upgrade", patch_upgrade_template);
 router.get("/", get_templates);
 module.exports = router;
