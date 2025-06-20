@@ -28,7 +28,7 @@ const get_policies_to_acknowledge = async (req, res) => {
   try {
     const employee_id = req.params.id;
 
-    const pending_requests = await models.acknowledgement_request.find_all({
+    const pending_requests = await models.acknowledgement_request.findAll({
       where: { employee_id, status: status.PENDING },
       include: [models.policy],
     });
@@ -62,7 +62,7 @@ const get_acknowledgement_history = async (req, res) => {
   try {
     const employee_id = req.params.id;
 
-    const history = await models.policy_acknowledgement.find_all({
+    const history = await models.policy_acknowledgement.findAll({
       where: { employee_id },
       include: [models.policy],
     });

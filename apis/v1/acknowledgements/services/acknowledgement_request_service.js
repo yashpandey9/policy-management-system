@@ -13,7 +13,7 @@ const create_manual_acknowledgement_request = async ({ employee_id, policy_id, r
 };
 
 const fetch_pending_acknowledgement_requests = async ({ customer_company_id }) => {
-  return await models.acknowledgement_request.find_all({
+  return await models.acknowledgement_request.findAll({
     where: {
       status: status.PENDING,
       "$employee.customer_company_id$": customer_company_id,

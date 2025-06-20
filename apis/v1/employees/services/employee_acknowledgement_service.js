@@ -2,7 +2,7 @@ const { models } = require("../../../../database/models/db_generator");
 const { status } = require("../../../../enums/acknowledgement_request")
 
 const acknowledge_policy_for_employee = async ({ employee_id, policy_id, acknowledgement_type }) => {
-  const policy = await models.policy.find_by_pk(policy_id);
+  const policy = await models.policy.findByPk(policy_id);
 
   await Promise.all([
     models.policy_acknowledgement.create({
